@@ -1,0 +1,40 @@
+.project-template-wrapper {
+  width: 90%;
+  margin: 0 auto;
+  h2 {
+    font-family: $fontH;
+    font-size: 3.2rem;
+    margin-bottom: 1.6rem;
+  }
+  p {
+    margin: 1.6rem 0;
+    text-align: justify;
+  }
+  .project-image-gallery {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    grid-gap: 3.2rem;
+    justify-items: center;
+    @media (max-width: $bpSm3) {
+      grid-template-columns: 1fr;
+      grid-auto-rows: 1fr;
+      grid-gap: 1.6rem;
+    }
+    .gatsby-image-wrapper {
+      width: 100%;
+      height: 40rem;
+      @media (max-width: $bpMd2) {
+        height: 30rem;
+      }
+      @media (max-width: $bpSm3) {
+        height: 30rem;
+      }
+      &:nth-child(1) {
+        grid-row: 1 / -1;
+        grid-column: 1;
+        height: auto;
+      }
+    }
+  }
+}

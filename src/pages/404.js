@@ -1,14 +1,24 @@
 import React from "react"
 
-import Layout from "../components/layout"
+// components
 import SEO from "../components/seo"
+import CustomLink from "../components/customLink"
 
 const NotFoundPage = () => (
-  <Layout>
-    <SEO title="404: Not found" />
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-  </Layout>
+  <>
+    <SEO title="Page Not found" />
+    <div className="container">
+      <div className="notfound-wrapper" style={{ minHeight: "50vh" }}>
+        <h1 style={{ marginBottom: "1.6rem" }}>Page Not Found</h1>
+        <p style={{ marginBottom: "3.2rem" }}>
+          This page does not seem to exist.
+        </p>
+        <CustomLink path="/" styleClass="link link-main">
+          Go Back To Homepage
+        </CustomLink>
+      </div>
+    </div>
+  </>
 )
 
 export default NotFoundPage

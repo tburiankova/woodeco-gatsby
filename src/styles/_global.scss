@@ -1,0 +1,219 @@
+@import "./variables";
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: inherit;
+}
+
+html {
+  // this defines how much 1 rem is for our default resolution
+  font-size: 62.5%; // 1rem = 10px; 10/16 = 62.5%
+  @media only screen and (max-width: $bpLg3) {
+    font-size: 56.25%;
+  }
+  @media only screen and (max-width: $bpMd2) {
+    font-size: 50%;
+  }
+  @media only screen and (max-width: $bpSm1) {
+    font-size: 43.75%;
+  }
+}
+
+body {
+  box-sizing: border-box;
+  background-color: $offWhite;
+  overflow-x: hidden;
+}
+
+// transition link wrapper - remove scrollbar
+.tl-wrapper {
+  overflow: hidden;
+}
+
+h1,
+h2 {
+  font-family: $fontH;
+}
+
+h1,
+h2 {
+  font-size: 4rem;
+  color: $black;
+  @media only screen and (max-width: $bpSm3) {
+    font-size: 3.6rem;
+  }
+}
+
+h3 {
+  font-family: $fontP;
+  font-size: 2.4rem;
+  color: $darkGrey;
+  text-transform: uppercase;
+  letter-spacing: 0.06rem;
+  font-weight: 700;
+  @media only screen and (max-width: $bpSm1) {
+    font-size: 2rem;
+  }
+}
+
+p {
+  font-family: $fontP;
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 192%;
+  margin-bottom: 1.6rem;
+  color: $darkGrey;
+
+  @media only screen and (max-width: $bpSm1) {
+    font-size: 2.2rem;
+  }
+}
+
+ul {
+  list-style: none;
+}
+
+li {
+  font-family: $fontP;
+}
+
+.container {
+  position: relative;
+  width: 90%;
+  margin: 0 auto;
+  @media only screen and (min-width: $bpLg1) {
+    width: 80%;
+  }
+}
+
+.link {
+  text-decoration: none;
+  outline: none;
+  color: currentColor;
+}
+
+.link-main {
+  color: $orange;
+  text-transform: uppercase;
+  letter-spacing: 0.06rem;
+  font-size: 2rem;
+  font-weight: 700;
+  font-family: $fontP;
+  transition: all 0.4 $ease;
+  &:hover {
+    color: $hoverOrange;
+  }
+  @media only screen and (max-width: $bpSm1) {
+    font-size: 1.9rem;
+  }
+}
+
+button {
+  border: none;
+  margin: 0;
+  padding: 0;
+  width: auto;
+  overflow: visible;
+  outline: none;
+
+  background: transparent;
+
+  /* inherit font & color from ancestor */
+  color: inherit;
+  font: inherit;
+
+  /* Normalize `line-height`. Cannot be changed from `normal` in Firefox 4+. */
+  line-height: normal;
+
+  /* Corrects font smoothing for webkit */
+  -webkit-font-smoothing: inherit;
+  -moz-osx-font-smoothing: inherit;
+
+  /* Corrects inability to style clickable `input` types in iOS */
+  -webkit-appearance: none;
+
+  /* Remove excess padding and border in Firefox 4+ */
+  &::-moz-focus-inner {
+    border: 0;
+    padding: 0;
+  }
+}
+
+.cta-btn,
+.filter-btn {
+  cursor: pointer;
+  display: inline-block;
+  padding: 2rem 3.6rem;
+  background-color: $orange;
+  font-family: $fontP;
+  color: $white;
+  font-size: 2rem;
+  transition: all 0.2s $ease;
+  &:hover {
+    background-color: $hoverOrange;
+    transform: scale(1.03);
+  }
+
+  @media only screen and (max-width: $bpSm1) {
+    padding: 1.6rem 2.4rem;
+    font-size: 2.2rem;
+  }
+}
+
+.filter-btn {
+  background-color: $white;
+  color: $darkGrey;
+  padding: 1.5rem 2rem;
+  font-size: 1.5rem;
+  margin-top: 3.2rem;
+  &:not(:last-child) {
+    margin-right: 0.8rem;
+  }
+  &:hover {
+    background-color: $beige;
+  }
+  @media only screen and (max-width: $bpSm2) {
+    margin-top: 1.6rem;
+  }
+}
+
+.logo-dark {
+  font-family: $fontH;
+  font-size: 4rem;
+  color: $black;
+  @media only screen and (max-width: $bpSm1) {
+    font-size: 3rem;
+  }
+  span {
+    color: $orange;
+    font-weight: 700;
+  }
+}
+
+.logo-light {
+  font-family: $fontH;
+  font-size: 4rem;
+  color: $white;
+  @media only screen and (max-width: $bpSm1) {
+    font-size: 3rem;
+  }
+  span {
+    color: $orange;
+    font-weight: 700;
+  }
+}
+
+.active-navlink {
+  color: $lightGrey;
+}
+
+.success {
+  color: $green;
+}
+
+.error {
+  color: $red;
+}

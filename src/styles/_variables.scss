@@ -1,0 +1,49 @@
+// colors
+$white: #ffffff;
+$offWhite: #f7f7f5;
+$beige: #f6efe8;
+$lightGrey: #c4c4c4;
+$darkGrey: #61615e;
+$black: #282828;
+$orange: #ef5b39;
+$hoverOrange: #c35b39;
+$green: #02c39a;
+$red: #e71d36;
+$hoverBlack: rgba(40, 40, 40, 0.8);
+$transparentWhite: rgba(255, 255, 255, 0.4);
+
+// font
+$fontH: "Rufina", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+$fontP: "Lato", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+  Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+
+// margins
+$sm: 0.8rem;
+$md: 1.6rem;
+$md2: 3.2rem;
+$lg: 8rem;
+$lg2: 16rem;
+
+// easing
+$ease: cubic-bezier(0.72, 0.53, 0.74, 0.87);
+
+// shadows
+$lightShadow: 2px 4px 24px rgba(0, 0, 0, 0.05);
+
+// breakpoints
+$bpLargest: 118.75em; // 1900px
+$bpLg1: 100em; // 1600px
+$bpLg2: 90em; // 1440px
+$bpLg3: 85.625em; // 1370px
+$bpLg4: 68.75em; // 1100px
+$bpMd1: 64em; // 1024 px
+$bpMd2: 53.125em; // 850 px
+$bpMd3: 46.875em; // 750 px
+$bpSm1: 37.5em; // 600 px
+$bpSm2: 31.25em; // 500 px
+$bpSm3: 25em; // 400 px
+
+// devices
+$ipadProPort: "and (min-device-width: 1024px) and (max-device-height: 1366px) and (-webkit-min-device-pixel-ratio: 2)  and (orientation: portrait)";
+$ipadProLand: "and (min-device-width: 1024px) and (max-device-height: 1366px) and (-webkit-min-device-pixel-ratio: 2)  and (orientation: landscape)";
+$tablets: "and (min-device-width: 768px) and (max-device-width: 1024px) and (-webkit-min-device-pixel-ratio: 1)";

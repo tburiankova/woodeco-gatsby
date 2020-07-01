@@ -1,51 +1,66 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.org/docs/use-static-query/
- */
+import React, { useState } from "react"
 
-import React from "react"
-import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
+// components
+import Navigation from "./navigation"
+import MobileNavigation from "./mobileNavigation"
+import Footer from "./footer"
 
-import Header from "./header"
-import "./layout.css"
+// styles
+import "../styles/main.scss"
 
 const Layout = ({ children }) => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-
+  const [navOpen, setNavOpen] = useState(false)
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
+      <Navigation navOpen={navOpen} setNavOpen={setNavOpen} />
+      <MobileNavigation navOpen={navOpen} setNavOpen={setNavOpen} />
+      {children}
+      <Footer />
     </>
   )
 }
 
-Layout.propTypes = {
-  children: PropTypes.node.isRequired,
-}
-
 export default Layout
+
+// const pageTransition = {
+//   initial: {
+//     opacity: 0,
+//     y: 20,
+//   },
+//   enter: {
+//     opacity: 1,
+//     y: 0,
+//     transition: {
+//       duration: 0.5,
+//       delay: 0.5,
+//       when: "beforeChildren",
+//     },
+//   },
+//   exit: {
+//     opacity: 0,
+//     y: 20,
+//     transition: {
+//       duration: 0.5,
+//     },
+//   },
+// }
+
+// const Layout = ({ children }) => {
+//   return (
+//     <>
+//       <Navigation />
+//       {/* <AnimatePresence>
+//         <motion.main
+//           key={location.pathname}
+//           variants={pageTransition}
+//           initial="initial"
+//           animate="enter"
+//           exit="exit"
+//         > */}
+//       {children}
+//       {/* </motion.main>
+//       </AnimatePresence> */}
+//       <Footer />
+//     </>
+//   )
+// }

@@ -1,0 +1,29 @@
+.about-section-wrapper {
+  margin: 16rem 0 3.2rem;
+  display: flex;
+  justify-content: space-between;
+  @media only screen and (max-width: $bpMd2) {
+    margin: 8rem 3.2rem;
+  }
+  @media only screen and (max-width: $bpSm3) {
+    flex-direction: column;
+  }
+  .about-section-col {
+    width: 45%;
+    @media only screen and (max-width: $bpSm3) {
+      width: 100%;
+    }
+    &:nth-of-type(2n) {
+      margin-top: 5rem;
+    }
+    p {
+      margin-top: 3.2rem;
+    }
+  }
+}
+
+.about-section-link {
+  @media only screen and (max-width: $bpMd2) {
+    margin: -5rem 0 8rem 3.2rem;
+  }
+}

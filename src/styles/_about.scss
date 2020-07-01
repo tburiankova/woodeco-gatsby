@@ -1,0 +1,25 @@
+.about-wrapper {
+  h3 {
+    margin-top: 1.6rem;
+  }
+  .about-content-wrapper {
+    margin-top: 3.2rem;
+    display: flex;
+    justify-content: space-between;
+    @media only screen and (max-width: $bpMd3) {
+      flex-direction: column;
+    }
+    .about-image-wrapper {
+      min-width: 40%;
+      flex: 0;
+    }
+    .about-text-wrapper {
+      width: 55%;
+      margin-top: 8rem;
+      @media only screen and (max-width: $bpMd3) {
+        width: 100%;
+        margin-top: 3.2rem;
+      }
+    }
+  }
+}

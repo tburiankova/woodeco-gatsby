@@ -1,0 +1,60 @@
+.contact-page-wrapper {
+  p {
+    margin-top: 3.2rem;
+    width: 50%;
+    @media only screen and (max-width: $bpSm2) {
+      width: 80%;
+    }
+  }
+  .form-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    form {
+      width: 60%;
+      @media only screen and (max-width: $bpSm1) {
+        width: 90%;
+      }
+      div {
+        display: flex;
+        flex-direction: column;
+        margin-top: 3.2rem;
+      }
+
+      label {
+        font-size: 2rem;
+        font-family: $fontH;
+        color: $lightGrey;
+        margin-bottom: 0.8rem;
+      }
+      input,
+      textarea,
+      select {
+        padding: 1.5rem 2.3rem;
+        border: none;
+        font-size: 1.6rem;
+        font-family: $fontP;
+        &:focus {
+          outline-color: $orange;
+        }
+        &::placeholder {
+          color: $darkGrey;
+          opacity: 1;
+        }
+      }
+      textarea {
+        resize: none;
+      }
+      select {
+        appearance: none;
+        color: $darkGrey;
+      }
+
+      // fix for background not appearing on iOs devices
+      .select-wrapper {
+        background: $white;
+        margin-top: 0;
+      }
+    }
+  }
+}

@@ -1,0 +1,111 @@
+.services-section-wrapper {
+  min-height: 80rem;
+  margin-top: 8rem;
+  position: relative;
+
+  @media only screen and (max-width: $bpMd1) {
+    min-height: 70rem;
+  }
+
+  @media only screen and (max-width: $bpSm1) {
+    width: 90%;
+    margin: 8rem auto 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .services-section-content {
+    position: absolute;
+    top: 0;
+    right: 15%;
+    padding: 8rem 9.6rem;
+    background-color: $white;
+    box-shadow: $lightShadow;
+    z-index: 1;
+
+    @media only screen and (max-width: $bpLg2) {
+      padding: 5.6rem 8rem;
+    }
+
+    @media only screen and (max-width: $bpMd2) {
+      right: 10%;
+    }
+
+    @media only screen and (max-width: $bpSm1) {
+      right: 0;
+      position: relative;
+    }
+
+    @media only screen and (max-width: $bpSm2) {
+      padding: 3.2rem 4.8rem;
+    }
+
+    .services-section-inner {
+      h2 {
+        font-size: 4rem;
+        color: $black;
+        @media only screen and (max-width: $bpMd2) {
+          font-size: 3rem;
+        }
+      }
+      ul {
+        list-style: none;
+        margin: 3.2rem 0;
+        li {
+          font-size: 2rem;
+          color: $darkGrey;
+          line-height: 5rem;
+          display: flex;
+
+          @media only screen and (max-width: $bpMd2) {
+            font-size: 2.2rem;
+          }
+          @media only screen and (max-width: $bpSm1) {
+            line-height: 3rem;
+            margin-bottom: 2rem;
+          }
+          span {
+            color: $lightGrey;
+            font-family: $fontH;
+            font-size: 3rem;
+            margin-right: 1rem;
+            display: inline;
+            @media only screen and (max-width: $bpMd2) {
+              font-size: 2.3rem;
+            }
+          }
+        }
+      }
+    }
+  }
+  .services-section-img {
+    width: 55rem;
+    object-fit: cover;
+    overflow: hidden;
+    position: absolute;
+    bottom: 0;
+    left: 20rem;
+    z-index: -1;
+
+    @media only screen and (max-width: $bpMd1) {
+      bottom: 0;
+      left: 5rem;
+    }
+
+    @media only screen and (max-width: $bpMd2) {
+      width: 52rem;
+    }
+
+    @media only screen and (max-width: $bpMd3) {
+      position: relative;
+      width: 100%;
+      left: 0;
+      margin-top: 3.2rem;
+      box-shadow: $lightShadow;
+    }
+
+    img {
+      width: 100%;
+    }
+  }
+}
