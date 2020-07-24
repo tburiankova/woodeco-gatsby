@@ -3,19 +3,17 @@ const path = require("path")
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions
   const result = await graphql(`
-    query AllProjects {
-      allMarkdownRemark {
+    query GetProjects {
+      allContentfulWoodecoProject {
         nodes {
-          frontmatter {
-            slug
-          }
+          slug
         }
-        distinct(field: frontmatter___type)
+        distinct(field: type)
       }
     }
   `)
 
-  result.data.allMarkdownRemark.nodes.forEach(({ frontmatter: { slug } }) => {
+  result.data.allContentfulWoodecoProject.nodes.forEach(({ slug }) => {
     createPage({
       path: `/projects/${slug}`,
       component: path.resolve(`src/templates/project.js`),
@@ -24,7 +22,7 @@ exports.createPages = async ({ graphql, actions }) => {
       },
     })
   })
-  result.data.allMarkdownRemark.distinct.forEach(category => {
+  result.data.allContentfulWoodecoProject.distinct.forEach(category => {
     createPage({
       path: `/projects/${category}`,
       component: path.resolve(`src/templates/category.js`),

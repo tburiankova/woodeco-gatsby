@@ -7,8 +7,9 @@ import CustomLink from "../components/customLink"
 import SEO from "../components/seo"
 
 function Category({ data, pageContext }) {
+  // query
   const {
-    allMarkdownRemark: { nodes },
+    projects: { edges },
   } = data
 
   // capitalize category name
@@ -47,12 +48,12 @@ function Category({ data, pageContext }) {
             </CustomLink>
           )}
           <div className="featured-gallery-wrapper">
-            {nodes.map(node => (
+            {edges.map(({ node }) => (
               <ProjectThumbnail
                 key={node.id}
-                path={`/projects/${node.frontmatter.slug}`}
-                imageSrc={node.frontmatter.image1.childImageSharp.fluid}
-                title={node.frontmatter.title}
+                path={`/projects/${node.slug}`}
+                imageSrc={node.images[0].fluid}
+                title={node.title}
               />
             ))}
           </div>
@@ -64,20 +65,18 @@ function Category({ data, pageContext }) {
 
 export const query = graphql`
   query FilterType($category: String!) {
-    allMarkdownRemark(filter: { frontmatter: { type: { eq: $category } } }) {
-      nodes {
-        frontmatter {
+    projects: allContentfulWoodecoProject(filter: { type: { eq: $category } }) {
+      edges {
+        node {
           title
           slug
-          image1 {
-            childImageSharp {
-              fluid {
-                src
-              }
+          id
+          images {
+            fluid {
+              ...GatsbyContentfulFluid
             }
           }
         }
-        id
       }
     }
   }

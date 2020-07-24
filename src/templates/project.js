@@ -7,34 +7,40 @@ import CustomLink from "../components/customLink"
 import SEO from "../components/seo"
 
 function Project({ data }) {
-  const { markdownRemark } = data
+  // query
+  const { project } = data
+
   return (
     <>
       <SEO
-        title={markdownRemark.frontmatter.title}
-        description={`Page for the ${markdownRemark.frontmatter.title} project.`}
+        title={project.title}
+        description={`Page for the ${project.title} project.`}
       />
       <div className="container">
         <div className="project-template-wrapper">
-          <h1>{markdownRemark.frontmatter.title}</h1>
+          <h1>{project.title}</h1>
           <div className="project-image-gallery">
             <Img
-              fluid={markdownRemark.frontmatter.image1.childImageSharp.fluid}
-              alt={markdownRemark.frontmatter.title}
+              fluid={project.images[0].fluid}
+              alt={project.title}
               objectPosition="50% 80%"
             />
             <Img
-              fluid={markdownRemark.frontmatter.image2.childImageSharp.fluid}
-              alt={markdownRemark.frontmatter.title}
+              fluid={project.images[1].fluid}
+              alt={project.title}
               objectPosition="50% 80%"
             />
             <Img
-              fluid={markdownRemark.frontmatter.image3.childImageSharp.fluid}
-              alt={markdownRemark.frontmatter.title}
+              fluid={project.images[2].fluid}
+              alt={project.title}
               objectPosition="50% 90%"
             />
           </div>{" "}
-          <div dangerouslySetInnerHTML={{ __html: markdownRemark.html }} />
+          <div
+            dangerouslySetInnerHTML={{
+              __html: project.description.childMarkdownRemark.html,
+            }}
+          />
           <br />
           <br />
           <br />
@@ -48,33 +54,19 @@ function Project({ data }) {
 }
 
 export const query = graphql`
-  query SingleProject($slug: String!) {
-    markdownRemark(frontmatter: { slug: { eq: $slug } }) {
-      frontmatter {
-        title
-        image1 {
-          childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-        image2 {
-          childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-        image3 {
-          childImageSharp {
-            fluid {
-              ...GatsbyImageSharpFluid
-            }
-          }
+  query SingleProject($slug: String) {
+    project: contentfulWoodecoProject(slug: { eq: $slug }) {
+      title
+      description {
+        childMarkdownRemark {
+          html
         }
       }
-      html
+      images {
+        fluid {
+          ...GatsbyContentfulFluid
+        }
+      }
     }
   }
 `

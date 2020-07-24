@@ -7,8 +7,9 @@ import CustomLink from "../components/customLink"
 import SEO from "../components/seo"
 
 function Projects({ data }) {
+  // query
   const {
-    allMarkdownRemark: { nodes },
+    projects: { edges },
   } = data
 
   return (
@@ -28,12 +29,12 @@ function Projects({ data }) {
           </CustomLink>
           <div className="featured-ghost">WOOD</div>
           <div className="featured-gallery-wrapper">
-            {nodes.map(node => (
+            {edges.map(({ node }) => (
               <ProjectThumbnail
                 key={node.id}
-                path={`/projects/${node.frontmatter.slug}`}
-                imageSrc={node.frontmatter.image1.childImageSharp.fluid}
-                title={node.frontmatter.title}
+                path={`/projects/${node.slug}`}
+                imageSrc={node.images[0].fluid}
+                title={node.title}
               />
             ))}
           </div>
@@ -45,20 +46,19 @@ function Projects({ data }) {
 
 export const query = graphql`
   {
-    allMarkdownRemark {
-      nodes {
-        frontmatter {
-          image1 {
-            childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid
-              }
+    projects: allContentfulWoodecoProject(sort: { fields: createdAt }) {
+      edges {
+        node {
+          id
+          slug
+          type
+          title
+          images {
+            fluid {
+              ...GatsbyContentfulFluid
             }
           }
-          slug
-          title
         }
-        id
       }
     }
   }

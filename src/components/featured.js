@@ -12,20 +12,19 @@ import CustomLink from "./customLink"
 
 const query = graphql`
   query FeaturedProjects {
-    allMarkdownRemark(filter: { frontmatter: { featured: { eq: true } } }) {
+    featuredProjects: allContentfulWoodecoProject(
+      filter: { featured: { eq: true } }
+      sort: { fields: createdAt }
+    ) {
       nodes {
-        frontmatter {
-          image1 {
-            childImageSharp {
-              fluid {
-                ...GatsbyImageSharpFluid
-              }
-            }
-          }
-          slug
-          title
-        }
         id
+        slug
+        title
+        images {
+          fluid {
+            ...GatsbyContentfulFluid
+          }
+        }
       }
     }
   }
@@ -53,7 +52,10 @@ function Featured() {
     })
   }, [])
 
-  const data = useStaticQuery(query)
+  // query
+  const {
+    featuredProjects: { nodes },
+  } = useStaticQuery(query)
 
   return (
     <div className="container">
@@ -61,20 +63,14 @@ function Featured() {
         <h2>Featured Projects</h2>
         <div className="featured-ghost">WOOD</div>
         <div className="featured-gallery-wrapper">
-          {data.allMarkdownRemark.nodes.map(node => (
+          {nodes.map(node => (
             <div key={node.id} className="featured-project">
-              <CustomLink
-                path={`/projects/${node.frontmatter.slug}`}
-                styleClass="link"
-              >
+              <CustomLink path={`/projects/${node.slug}`} styleClass="link">
                 <div className="featured-project-img">
-                  <Img
-                    fluid={node.frontmatter.image1.childImageSharp.fluid}
-                    alt={node.frontmatter.title}
-                  />
+                  <Img fluid={node.images[0].fluid} alt={node.title} />
                 </div>
                 <div className="featured-project-info">
-                  <span>{node.frontmatter.title}</span>
+                  <span>{node.title}</span>
                 </div>
               </CustomLink>
             </div>

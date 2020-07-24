@@ -1,3 +1,6 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+})
 module.exports = {
   siteMetadata: {
     title: `Woodeco Hardwood Flooring`,
@@ -16,13 +19,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `projects`,
-        path: `${__dirname}/src/data/projects`,
-      },
-    },
-    {
       resolve: `gatsby-transformer-remark`,
       options: {},
     },
@@ -30,6 +26,13 @@ module.exports = {
       resolve: "gatsby-plugin-transition-link",
       options: {
         layout: require.resolve(`./src/components/layout.js`),
+      },
+    },
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: `yc3hic5qmehx`,
+        accessToken: process.env.ACCESS_TOKEN,
       },
     },
     `gatsby-transformer-sharp`,
@@ -68,8 +71,5 @@ module.exports = {
         ],
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ],
 }
